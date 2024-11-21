@@ -1,0 +1,863 @@
+body {
+  width: 360px;
+  min-height: 480px;
+  margin: 0;
+  padding: 20px;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  box-sizing: border-box;
+}
+
+.screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--background-color);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.container {
+  background: var(--card-background);
+  padding: 24px;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  width: 100%;
+  box-sizing: border-box;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-gradient));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+}
+
+.subtitle {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--secondary-color);
+  text-align: center;
+  margin: 8px 0 24px 0;
+  line-height: 1.4;
+  max-width: 260px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.input-group {
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 500;
+  margin-bottom: 6px;
+  color: var(--text-color);
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.select-header {
+  padding: 12px 16px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.2s;
+}
+
+.select-header:hover {
+  border-color: var(--primary-color);
+  background-color: var(--input-hover);
+}
+
+.select-header::after {
+  content: none;
+}
+
+.select-open .select-header i {
+  transform: rotate(180deg);
+}
+
+.select-options {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background-color: var(--card-background);
+  border-radius: 12px;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 100;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  border: 1.5px solid var(--border-color);
+  transition: opacity 0.2s, visibility 0.2s;
+}
+
+.select-open .select-options {
+  opacity: 1;
+  visibility: visible;
+}
+
+.select-option {
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.select-option:hover {
+  background-color: var(--input-hover);
+  color: var(--primary-color);
+}
+
+.styled-input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  background-color: var(--input-background);
+  color: var(--text-color);
+  font-size: 14px;
+  transition: all 0.2s;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+}
+
+.styled-input:hover {
+  border-color: var(--primary-color);
+  background-color: var(--input-hover);
+}
+
+.styled-input:focus {
+  border-color: var(--primary-color);
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-shadow);
+}
+
+.primary-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, var(--primary-color), var(--primary-gradient));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 8px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.primary-button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px var(--primary-shadow);
+}
+
+.error-message {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 4px;
+  animation: shake 0.5s ease-in-out;
+}
+
+.input-error {
+  border-color: var(--error-color) !important;
+  margin-bottom: 8px;
+}
+
+/* Add these styles for main screen */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 24px;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo {
+  height: 28px;
+  width: auto;
+}
+
+.icon-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: var(--input-background);
+  color: var(--text-color);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.icon-button:hover {
+  background: var(--input-hover);
+  color: var(--primary-color);
+}
+
+.add-button-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.add-button-container .primary-button {
+  max-width: 200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.sites-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 24px 0;
+  min-height: 100px;
+}
+
+.footer {
+  margin-top: auto;
+}
+
+.actions-bar {
+  padding: 16px 0;
+  display: flex;
+  gap: 8px;
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.site-item {
+  padding: 12px 16px;
+  background: var(--input-background);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.site-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+  min-width: 0;
+}
+
+.site-favicon {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.site-url {
+  flex: 1;
+  font-size: 14px;
+  color: var(--text-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.delete-site {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 0;
+}
+
+.delete-site:hover {
+  opacity: 1;
+}
+
+.delete-site i {
+  font-size: 14px;
+}
+
+.dark-theme .delete-site {
+  background: var(--card-background);
+}
+
+.secondary-button {
+  flex: 1;
+  height: 40px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--input-background);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.secondary-button:hover {
+  background: var(--input-hover);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.dark-theme .secondary-button:hover {
+  background: var(--input-hover);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.dark-theme .secondary-button {
+  background: var(--card-background);
+}
+
+/* Custom checkbox */
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  user-select: none;
+  background: none;
+  padding: 0;
+  margin-top: -1px;
+}
+
+.dark-theme .checkbox-container {
+  background: var(--card-background);
+}
+
+.checkbox-container:hover {
+  background: none;
+}
+
+.checkbox-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: relative;
+  height: 18px;
+  width: 18px;
+  background-color: transparent;
+  border: 1.5px solid var(--border-color);
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.checkbox-container input:checked ~ .checkmark {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.checkmark:after {
+  content: '';
+  position: absolute;
+  display: none;
+  left: 5px;
+  top: 1px;
+  width: 4px;
+  height: 9px;
+  border: solid white;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Update modal styles */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s;
+}
+
+.modal-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Regular modal styles (for Add Website and Change Password) */
+.modal {
+  background: var(--card-background);
+  padding: 24px;
+  border-radius: 16px;
+  width: 280px;
+  position: relative;
+  transform: translateY(20px);
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px var(--shadow-color);
+  box-sizing: border-box;
+}
+
+.modal-overlay.visible .modal {
+  transform: translateY(0);
+}
+
+/* Settings modal specific styles */
+#settingsModal .modal {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  border-radius: 0;
+  background: var(--background-color);
+  transform: none;
+}
+
+/* Modal header and close button styles */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.modal-header h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin: 0;
+}
+
+/* Regular modal close button */
+.modal-close {
+  position: absolute;
+  right: -8px;
+  top: -2px;
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: color 0.2s;
+  padding: 0;
+}
+
+/* Settings modal close button */
+#settingsModal .modal-close {
+  position: absolute;
+}
+
+/* Remove hover background from all close buttons */
+.modal-close:hover {
+  color: var(--primary-color);
+}
+
+/* Add site modal specific styles */
+#addSiteModal .modal {
+  width: 280px;
+}
+
+#addSiteModal .modal-close {
+  right: -8px;
+  top: -2px;
+}
+
+#addSiteModal .styled-input {
+  margin-bottom: 16px;
+}
+
+#addSiteModal .primary-button {
+  margin-top: auto;
+}
+
+/* Change password modal styles */
+#changePasswordModal .modal {
+  width: 280px;
+}
+
+#changePasswordModal .modal-close {
+  right: -8px;
+  top: -2px;
+}
+
+/* Update settings section styles */
+.settings-section {
+  margin-bottom: 24px;
+}
+
+.settings-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--text-color);
+}
+
+#changePasswordForm {
+  margin-top: 16px;
+}
+
+#changePasswordForm input {
+  margin-bottom: 12px;
+}
+
+#changePasswordForm button {
+  margin-top: 8px;
+}
+
+/* Add modal error styles */
+.modal-error {
+  color: var(--error-color);
+  font-size: 12px;
+  margin: 4px 0 16px;
+  display: block;
+  position: static;
+}
+
+.about-section {
+  text-align: center;
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-color);
+  color: var(--secondary-color);
+  font-size: 13px;
+}
+
+.about-section p {
+  margin: 4px 0;
+}
+
+.about-section .version {
+  color: var(--primary-color);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.about-section a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.about-section a:hover {
+  text-decoration: underline;
+}
+
+.about-section .fa-heart {
+  color: #EF4444;
+  margin: 0 2px;
+}
+
+/* Update password input container styles */
+.password-input-container {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+.password-input-container .styled-input {
+  padding-right: 40px;
+  margin-bottom: 0;
+}
+
+/* Update error message styles */
+.modal-error {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 6px;
+  display: block;
+  position: absolute;
+  left: 0;
+  bottom: -24px;
+}
+
+/* Update input error state */
+.input-error {
+  border-color: var(--error-color) !important;
+  margin-bottom: 0;
+}
+
+/* Ensure proper spacing between inputs with errors */
+.password-input-container:last-of-type {
+  margin-bottom: 32px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--secondary-color);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.toggle-password:hover {
+  color: var(--primary-color);
+}
+
+.toggle-password svg {
+  width: 20px;
+  height: 20px;
+  color: var(--secondary-color);
+}
+
+.toggle-password:hover svg {
+  color: var(--primary-color);
+}
+
+/* Add settings modal styles */
+.settings-modal {
+  max-width: 320px;
+}
+
+.settings-section {
+  margin-bottom: 24px;
+}
+
+.settings-section h4 {
+  font-size: 14px;
+  font-weight: 600;
+  margin: 0 0 12px;
+  color: var(--text-color);
+}
+
+.settings-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.settings-section .secondary-button {
+  margin-bottom: 8px;
+}
+
+/* Update site actions styles */
+.site-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 32px;
+}
+
+/* Update delete button styles */
+.delete-site {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: var(--error-color);
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity 0.2s;
+  padding: 0;
+  margin-top: -1px;
+}
+
+.delete-site:hover {
+  opacity: 1;
+}
+
+.delete-site i {
+  font-size: 14px;
+}
+
+/* Add these styles */
+.settings-divider {
+    border: none;
+    border-top: 1px solid var(--border-color);
+    margin: 24px 0;
+}
+
+.settings-section {
+    margin-bottom: 24px;
+}
+
+#changePasswordForm {
+    margin-top: 16px;
+}
+
+#changePasswordForm .styled-input {
+    margin-bottom: 12px;
+}
+
+#changePasswordForm .primary-button {
+    margin-top: 8px;
+}
+
+.modal-error {
+    color: var(--error-color);
+    font-size: 12px;
+    margin: -8px 0 12px;
+}
+
+/* Change password modal styles */
+#changePasswordModal .modal {
+  width: 280px;
+}
+
+#changePasswordModal .password-input-container {
+  position: relative;
+  margin-bottom: 28px;
+}
+
+#changePasswordModal .modal-error {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+  margin: 0;
+  font-size: 12px;
+  color: var(--error-color);
+}
+
+#changePasswordModal .password-input-container:last-of-type {
+  margin-bottom: 24px;
+}
+
+#changePasswordModal .styled-input {
+  margin-bottom: 0;
+}
+
+/* Different hover states for different modals */
+#settingsModal .modal-close:hover {
+  background: none;
+  color: var(--primary-color);
+}
+
+#addSiteModal .modal-close:hover,
+#changePasswordModal .modal-close:hover {
+  color: var(--primary-color);
+  background: none;
+}
+
+/* Update site item styles */
+.site-item {
+  padding: 12px 16px;
+  background: var(--input-background);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.dark-theme .site-item {
+  background: var(--card-background);
+}
+
+/* Update secondary button dark mode styles */
+.dark-theme .secondary-button {
+  background: var(--card-background);
+}
+
+/* Update icon button dark mode styles */
+.dark-theme .icon-button {
+  background: var(--card-background);
+}
+
+/* Add site modal content wrapper */
+#addSiteModal .modal-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.modal-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-wrapper {
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.input-wrapper .styled-input {
+  margin-bottom: 0;
+}
+
+.modal-error {
+  color: var(--error-color);
+  font-size: 12px;
+  margin-top: 4px;
+  position: absolute;
+  left: 0;
+  bottom: -20px;
+}
+
+/* Add site modal specific styles */
+#addSiteModal .modal {
+  width: 280px;
+}
+
+#addSiteModal .primary-button {
+  margin-top: 8px;
+}
+
+#addSiteModal .input-wrapper.has-error {
+  margin-bottom: 32px;
+}
+ 
